@@ -18,7 +18,12 @@ You can visualize the point set using:
 Each scalar columns will be considered as a `ScalarQuantity` in
 polyscope. `--vectorCols 5` means that columns 5 6 and 7 defines a vector quantity.
 
+Note that  you can display multiple files:
+```
+./diplayPTS  -i data1.pts data2.pts --vectorCols 5
+```
 
+![](screenshot.png)
 
 
 # Building
