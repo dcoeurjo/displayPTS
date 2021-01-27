@@ -2,11 +2,13 @@
 
 `displayPTS` is a simple CLI tool to visualize tabulated ASCII
 pointsets with some quantities attached to the samples (scalars or
-vectors) using [polyscope](https://polyscope.run).
+vectors) using [polyscope](https://polyscope.run) (actually, just a few
+lines of code around [polyscope](https://polyscope.run) but pretty
+handy tool).
 
 For instance, if your pointset is an ascii file `data.pts`:
 ```
-x y z scalar1 scalar2 vector1_x vector1_y vector1_z scalar3 ...
+x y z scalar1 scalar2 vector1x vector1y vector1z scalar3 scalar4...
 {one line per point}
 ```
 
