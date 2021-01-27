@@ -29,7 +29,10 @@ Note that  you can display multiple files:
 # Building
 
 * Get the code (and its submodules):
-`git clone --recursive https://github.com/dcoeurjo/displayPTS.git`
+```
+git clone --recursive https://github.com/dcoeurjo/displayPTS.git
+```
+
 * Generate the project (cmake) and build the code. For instance:
 ```
 cd displayPTS
