@@ -3,7 +3,7 @@
 
 `displayPTS` is a simple CLI tool to visualize tabulated ASCII
 pointsets with some quantities attached to the samples (scalars or
-vectors) using [polyscope](https://polyscope.run) (actually, just a few
+vectors) using the excellent [polyscope](https://polyscope.run) (actually, just a few
 lines of code around [polyscope](https://polyscope.run) but pretty
 handy tool at the end).
 
@@ -45,6 +45,6 @@ cmake .. -DCMAKE_BUILD_TYPE=Release
 make
 ```
 
-# Authors
+# Author
 
 [David Coeurjolly](https://perso.liris.cnrs.fr/david.coeurjolly), CNRS
