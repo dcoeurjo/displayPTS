@@ -26,6 +26,8 @@ Note that  you can display several pointsets:
 ./diplayPTS  -i data1.pts data2.pts --vectorCols 5
 ```
 
+(`./displayPTS -h` for the parameters)
+
 ![](screenshot.png)
 
 
