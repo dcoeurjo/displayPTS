@@ -1,4 +1,4 @@
-name: CMake
+name: Linux/Mac/Windows build
 
 on: [push]
 
