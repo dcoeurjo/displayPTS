@@ -7,7 +7,7 @@ vectors) using [polyscope](https://polyscope.run).
 For instance, if your pointset is an ascii file `data.pts`:
 ```
 x y z scalar1 scalar2 vector1_x vector1_y vector1_z scalar3 ...
-(one line per point)
+{one line per point}
 ```
 
 You can visualize the point set using:
