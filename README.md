@@ -6,7 +6,7 @@ vectors) using [polyscope](https://polyscope.run) (actually, just a few
 lines of code around [polyscope](https://polyscope.run) but pretty
 handy tool at the end).
 
-For instance, if your pointset is an ascii file `data.pts`:
+For instance, if your pointset is an ASCII file `data.pts`:
 ```
 x y z scalar1 scalar2 vector1x vector1y vector1z scalar3 scalar4...
 {one line per point}
