@@ -1,4 +1,5 @@
 # displayPTS
+![Linux/Mac/Windows build](https://github.com/dcoeurjo/displayPTS/workflows/Linux/Mac/Windows%20build/badge.svg)
 
 `displayPTS` is a simple CLI tool to visualize tabulated ASCII
 pointsets with some quantities attached to the samples (scalars or
