@@ -41,3 +41,7 @@ cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release
 make
 ```
+
+# Authors
+
+[David Coeurjolly](https://perso.liris.cnrs.fr/david.coeurjolly), CNRS
