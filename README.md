@@ -4,7 +4,7 @@
 pointsets with some quantities attached to the samples (scalars or
 vectors) using [polyscope](https://polyscope.run) (actually, just a few
 lines of code around [polyscope](https://polyscope.run) but pretty
-handy tool).
+handy tool at the end).
 
 For instance, if your pointset is an ascii file `data.pts`:
 ```
