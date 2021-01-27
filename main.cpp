@@ -6,7 +6,7 @@
 #include "polyscope/polyscope.h"
 #include "polyscope/point_cloud.h"
 
-#include "CLI11.hpp"
+#include "deps/CLI11.hpp"
 
 void processFile(const std::string &filename,
                 const std::vector<unsigned int> &vectorCols)
