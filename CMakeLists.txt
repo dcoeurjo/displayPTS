@@ -70,5 +70,5 @@ set(SRCS
 )
 
 # To change the name of your executable, change "gc_project" in the lines below to whatever you want
-add_executable(displayPts "${SRCS}")
-target_link_libraries(displayPts polyscope)
+add_executable(displayPTS "${SRCS}")
+target_link_libraries(displayPTS polyscope)
