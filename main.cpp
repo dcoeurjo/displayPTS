@@ -8,7 +8,6 @@
 
 #include "CLI11.hpp"
 
-
 void processFile(const std::string &filename,
                 const std::vector<unsigned int> &vectorCols)
 {
@@ -75,7 +74,6 @@ int main(int argc, char **argv)
   //Process all files
   for(auto &filename: filenames)
     processFile(filename,vectorCols);
-
   
   // Give control to the polyscope gui
   polyscope::show();
