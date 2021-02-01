@@ -68,6 +68,22 @@ int main(int argc, char **argv)
   app.add_option("--vectorCols", vectorCols, "Indices of columns to group as vectors (col col+1 col+2)");
   CLI11_PARSE(app,argc,argv);
   
+  auto errorMSG=[&](const size_t vi, const size_t vj){
+    std::cout<<"Error while parsing the vectorCols: ";
+    std::cout<<"("<<vi<<","<<vi+1<<","<<vi+2<<") overlaps with "<<"("<<vj<<","<<vj+1<<","<<vj+2<<")"<<std::endl;
+    exit(2);
+  };
+  
+  //Check the consistency of the param.
+  for(auto i=0u; i < vectorCols.size(); ++i)
+  {
+    for(auto j=i+1; j < vectorCols.size(); ++j)
+    {
+      if ((vectorCols[j] == vectorCols[i]) || (vectorCols[j] == vectorCols[i]+1) || (vectorCols[j] == vectorCols[i]+2))
+        errorMSG(vectorCols[i], vectorCols[j]);
+    }
+  }
+  
   // Initialize polyscope
   polyscope::init();
 

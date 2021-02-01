@@ -16,14 +16,15 @@ x y z scalar1 scalar2 vector1x vector1y vector1z scalar3 scalar4...
 You can visualize the point set using:
 
 ```
-./diplayPTS  -i data.pts --vectorCols 5
+./diplayPTS  -i data.pts --vectorCols 5 10
 ```
 Each scalar column will be considered as a `ScalarQuantity` in
-polyscope. `--vectorCols 5` means that columns 5 6 and 7 will define a vector quantity.
+polyscope. `--vectorCols 5` means that columns (5,6,7) and (10,11,12)
+will define  vector quantities attached to samples.
 
-Note that  you can display several pointsets:
+Note that  you can process several pointsets to compare them:
 ```
-./diplayPTS  -i data1.pts data2.pts --vectorCols 5
+./diplayPTS  -i data1.pts data2.pts --vectorCols 5 10
 ```
 
 (`./displayPTS -h` for the parameters)
