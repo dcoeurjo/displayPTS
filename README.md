@@ -10,7 +10,7 @@ handy tool at the end).
 For instance, if your pointset is an ASCII file `data.pts`:
 ```
 x y z scalar1 scalar2 vector1x vector1y vector1z scalar3 scalar4...
-{one line per point}
+{one point per line}
 ```
 
 You can visualize the point set using:
