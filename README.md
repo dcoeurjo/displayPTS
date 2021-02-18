@@ -29,7 +29,7 @@ Note that  you can process several pointsets to compare them:
 
 Additional parameters:
 * `--all`: expose all columns (including positions and vector components) as scalar quantities.
-* `--colX`: the `xyz` columns are not `0,1,2` but `colX,colX+1,colX+2`
+* `--colX c`: the `xyz` columns are not `0,1,2` but `c,c+1,c+2`
 
 (`./displayPTS -h` for the parameters)
 
