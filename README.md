@@ -27,6 +27,10 @@ Note that  you can process several pointsets to compare them:
 ./diplayPTS  -i data1.pts data2.pts --vectorCols 5 10
 ```
 
+Additional parameters:
+* `--all`: expose all columns (including positions and vector components) as scalar quantities.
+* `--colX`: the `xyz` columns are not `0,1,2` but `colX,colX+1,colX+2`
+
 (`./displayPTS -h` for the parameters)
 
 ![](screenshot.png)
