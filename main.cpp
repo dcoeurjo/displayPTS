@@ -9,7 +9,9 @@
 #include "deps/CLI11.hpp"
 
 void processFile(const std::string &filename,
-                const std::vector<unsigned int> &vectorCols)
+                const std::vector<unsigned int> &vectorCols,
+                 size_t colX,
+                 bool allCols)
 {
   std::vector<std::array<double, 3>> pc;
   std::vector<std::vector<double>> alldata;
@@ -28,32 +30,47 @@ void processFile(const std::string &filename,
       data.push_back(v);
       ++i;
     }
-    pc.push_back({data[0],data[1],data[2]});
+    pc.push_back({data[colX],data[colX+1],data[colX+2]});
     alldata.push_back(data);
   }
   std::cout<<filename<<" "<<alldata[0].size()<<" cols ["
            <<vectorCols.size()<<" vectors, "
-           << alldata[0].size()-3*vectorCols.size()-3<<" scalars]"<<std::endl;
+           << alldata[0].size()-3*vectorCols.size()-3<<" scalars] "<<alldata.size()<<" points."<<std::endl;
+  
+  std::vector<double> scalars(alldata.size());
+  std::vector<std::array<double, 3>> V;
+  if (vectorCols.size() != 0)
+    V.resize(alldata.size());
+  
   //Polyscope
   auto ps = polyscope::registerPointCloud(filename, pc);
   
   unsigned int indexV;
-  for(auto col=3u; col < alldata[0].size(); ++col)
+  for(auto col=0u; col < alldata[0].size(); ++col)
   {
+    if (col == colX) continue;
     if (std::find(vectorCols.begin(), vectorCols.end(), col) == vectorCols.end())
     {
-      std::vector<double> scalars;
       for(auto i=0u; i < alldata.size(); ++i)
-        scalars.push_back(alldata[i][col]);
+        scalars[i] = alldata[i][col];
       ps->addScalarQuantity("Scalar col"+std::to_string(col), scalars);
     }
     else
     {
-      std::vector<std::array<double, 3>> V;
       for(auto i=0u; i < alldata.size(); ++i)
-        V.push_back({alldata[i][col],alldata[i][col+1],alldata[i][col+2]});
+        V[i] ={alldata[i][col],alldata[i][col+1],alldata[i][col+2]};
         ps->addVectorQuantity("Vector col"+std::to_string(col), V);
      col +=2;
+    }
+  }
+  
+  if (allCols)
+  {
+    for(auto col=0u; col < alldata[0].size(); ++col)
+    {
+      for(auto i=0u; i < alldata.size(); ++i)
+       scalars[i] = alldata[i][col];
+      ps->addScalarQuantity("_(allCols) "+std::to_string(col), scalars);
     }
   }
 }
@@ -65,7 +82,11 @@ int main(int argc, char **argv)
   app.add_option("-i,--input,1", filenames, "Input point clouds")
      ->required();
   std::vector<unsigned int> vectorCols;
-  app.add_option("--vectorCols", vectorCols, "Indices of columns to group as vectors (col col+1 col+2)");
+  app.add_option("--vectorCols,-v", vectorCols, "Indices of columns to group as vectors (col col+1 col+2)");
+  bool allCols=false;
+  app.add_flag("--all,-a", allCols, "Expose all columns (including positions and vector components) as scalar quantities");
+  size_t colX=0;
+  app.add_option("--colX,-c", colX, "Index of the column c containing the 'x', (c+1 and c+2 will be 'y' and 'z'");
   CLI11_PARSE(app,argc,argv);
   
   auto errorMSG=[&](const size_t vi, const size_t vj){
@@ -89,7 +110,7 @@ int main(int argc, char **argv)
 
   //Process all files
   for(auto &filename: filenames)
-    processFile(filename,vectorCols);
+    processFile(filename,vectorCols,colX,allCols);
   
   // Give control to the polyscope gui
   polyscope::show();
