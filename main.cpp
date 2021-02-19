@@ -51,20 +51,22 @@ void processFile(const std::string &filename,
   unsigned int indexV;
   for(auto col=0u; col < alldata[0].size(); ++col)
   {
-    if (col == colX) continue;
-    if (std::find(vectorCols.begin(), vectorCols.end(), col) == vectorCols.end())
-    {
-      for(auto i=0u; i < alldata.size(); ++i)
-        scalars[i] = alldata[i][col];
-      ps->addScalarQuantity("Scalar col"+std::to_string(col), scalars);
-    }
+    if (col == colX)
+      col += 2;
     else
-    {
-      for(auto i=0u; i < alldata.size(); ++i)
-        V[i] ={alldata[i][col],alldata[i][col+1],alldata[i][col+2]};
+      if (std::find(vectorCols.begin(), vectorCols.end(), col) == vectorCols.end())
+      {
+        for(auto i=0u; i < alldata.size(); ++i)
+          scalars[i] = alldata[i][col];
+        ps->addScalarQuantity("Scalar col"+std::to_string(col), scalars);
+      }
+      else
+      {
+        for(auto i=0u; i < alldata.size(); ++i)
+          V[i] ={alldata[i][col],alldata[i][col+1],alldata[i][col+2]};
         ps->addVectorQuantity("Vector col"+std::to_string(col), V);
-     col +=2;
-    }
+        col +=2;
+      }
   }
   
   if (allCols)
