@@ -10,6 +10,7 @@
 
 void processFile(const std::string &filename,
                 const std::vector<unsigned int> &vectorCols,
+                 size_t n,
                  size_t colX,
                  bool allCols)
 {
@@ -18,7 +19,8 @@ void processFile(const std::string &filename,
   std::ifstream ifs(filename);
   double x,y,z;
   std::string line;
-  while(std::getline(ifs, line))
+  auto cpt = 0u;
+  while ((std::getline(ifs, line)) && ( (n ==0) || (cpt < n)))
   {
     std::stringstream   linestream(line);
     std::vector<double> data;
@@ -87,6 +89,8 @@ int main(int argc, char **argv)
   app.add_flag("--all,-a", allCols, "Expose all columns (including positions and vector components) as scalar quantities");
   size_t colX=0;
   app.add_option("--colX,-c", colX, "Index of the column c containing the 'x', (c+1 and c+2 will be 'y' and 'z'");
+  size_t nbPts=0;
+  app.add_option("--nbPts,-n", nbPts, "Number of points to display (0 = all points).");
   CLI11_PARSE(app,argc,argv);
   
   auto errorMSG=[&](const size_t vi, const size_t vj){
@@ -110,7 +114,7 @@ int main(int argc, char **argv)
 
   //Process all files
   for(auto &filename: filenames)
-    processFile(filename,vectorCols,colX,allCols);
+    processFile(filename,vectorCols,nbPts,colX,allCols);
   
   // Give control to the polyscope gui
   polyscope::show();

@@ -29,7 +29,8 @@ Note that  you can process several pointsets to compare them:
 
 Additional parameters:
 * `--all`: expose all columns (including positions and vector components) as scalar quantities.
-* `--colX c`: the `xyz` columns are not `0,1,2` but `c,c+1,c+2`
+* `--colX c`: the `xyz` columns are not `0,1,2` but `c,c+1,c+2`.
+* `--nbPts n`: read and display the first `n` points.
 
 (`./displayPTS -h` for the parameters)
 
