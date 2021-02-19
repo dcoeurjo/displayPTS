@@ -20,7 +20,7 @@ void processFile(const std::string &filename,
   double x,y,z;
   std::string line;
   auto cpt = 0u;
-  while ((std::getline(ifs, line)) && ( (n ==0) || (cpt < n)))
+  while ((std::getline(ifs, line)) && ((n == 0) || (cpt < n)))
   {
     std::stringstream   linestream(line);
     std::vector<double> data;
@@ -32,6 +32,7 @@ void processFile(const std::string &filename,
       data.push_back(v);
       ++i;
     }
+    ++cpt;
     pc.push_back({data[colX],data[colX+1],data[colX+2]});
     alldata.push_back(data);
   }
