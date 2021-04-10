@@ -22,19 +22,26 @@ void processFile(const std::string &filename,
   auto cpt = 0u;
   while ((std::getline(ifs, line)) && ((n == 0) || (cpt < n)))
   {
-    std::stringstream   linestream(line);
-    std::vector<double> data;
-    auto i=0;
-    while(linestream.good())
+    if (line.find("#") !=  std::string::npos)
     {
-      double v;
-      linestream >> v;
-      data.push_back(v);
-      ++i;
+      std::cout<<"Skipping # line"<<std::endl;
     }
-    ++cpt;
-    pc.push_back({data[colX],data[colX+1],data[colX+2]});
-    alldata.push_back(data);
+    else
+    {
+      std::stringstream   linestream(line);
+      std::vector<double> data;
+      auto i=0;
+      while(linestream.good())
+      {
+        double v;
+        linestream >> v;
+        data.push_back(v);
+        ++i;
+      }
+      ++cpt;
+      pc.push_back({data[colX],data[colX+1],data[colX+2]});
+      alldata.push_back(data);
+    }
   }
   std::cout<<filename<<" "<<alldata[0].size()<<" cols ["
            <<vectorCols.size()<<" vectors, "
