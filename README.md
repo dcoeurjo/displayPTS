@@ -39,9 +39,9 @@ Additional parameters:
 
 # Building
 
-* Get the code (and its submodules):
+* Get the code:
 ```
-git clone --recursive https://github.com/dcoeurjo/displayPTS.git
+git clone https://github.com/dcoeurjo/displayPTS.git
 ```
 
 * Generate the project (cmake) and build the code. For instance:
